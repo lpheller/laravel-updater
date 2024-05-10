@@ -28,13 +28,13 @@ class Updater
         }
 
         if(version_compare($currentLaravelVersion, '10.0', '<') && version_compare($currentLaravelVersion, '9.0', '>=')) {
-            echo "Updating Laravel $currentLaravelVersion to 10\n";
+            Console::log("Updating Laravel $currentLaravelVersion to 10");
             $this->updateToLaravel10();
         }
 
 
         if(version_compare($currentLaravelVersion, '11.0', '<') && version_compare($currentLaravelVersion, '10.0', '>=')) {
-            echo "Updating Laravel $currentLaravelVersion to 11\n";
+            Console::log("Updating Laravel $currentLaravelVersion to 11");
             $this->updateToLaravel11();
         }
 
