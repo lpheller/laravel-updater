@@ -112,15 +112,15 @@ class Updater
         // https://laravel.com/docs/9.x/upgrade#the-assert-deleted-methody
         $trustProxyMiddleware = file_get_contents('app/Http/Middleware/TrustProxies.php');
         if(str_contains($trustProxyMiddleware, 'use Fideloper\Proxy\TrustProxies as Middleware;')) {
-            $trustProxyMiddleware = str_replace('use Fideloper\Proxy\TrustProxies as Middleware;', 'use Illuminate\Http\Middleware\TrustProxies as Middleware;', $trustProxyMiddleware);
-            file_put_contents('app/Http/Middleware/TrustProxies.php', $trustProxyMiddleware);
+            $trustProxyMiddlewareModified = str_replace('use Fideloper\Proxy\TrustProxies as Middleware;', 'use Illuminate\Http\Middleware\TrustProxies as Middleware;', $trustProxyMiddleware);
+            file_put_contents('app/Http/Middleware/TrustProxies.php', $trustProxyMiddlewareModified);
         }
 
         //https://github.com/fruitcake/laravel-cors?tab=readme-ov-file#note-for-users-upgrading-to-laravel-9-10-or-higher
         $httpKernel = file_get_contents('app/Http/Kernel.php');
         if(str_contains($httpKernel, '\Fruitcake\Cors\HandleCors::class')) {
-            $httpKernel = str_replace('\Fruitcake\Cors\HandleCors::class', '\Illuminate\Http\Middleware\HandleCors::class', $httpKernel);
-            file_put_contents('app/Http/Kernel.php', $httpKernel);
+            $httpKernelModified = str_replace('\Fruitcake\Cors\HandleCors::class', '\Illuminate\Http\Middleware\HandleCors::class', $httpKernel);
+            file_put_contents('app/Http/Kernel.php', $httpKernelModified);
         }
     }
 
