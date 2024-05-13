@@ -65,7 +65,10 @@ class Updater
         $devRemovals = [
             'facade/ignition'
         ];
-        exec("git checkout -b update/laravel-9");
+
+        if($this->useGit){
+            exec("git checkout -b update/laravel-9");
+        }
 
         $this->updateComposerPackages($updatePackages);
         $this->updateComposerPackages($updateDevPackages, true);
