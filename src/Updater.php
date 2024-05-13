@@ -69,6 +69,10 @@ class Updater
             'facade/ignition'
         ];
 
+        $optionalUpdates = [
+            "inertiajs/inertia-laravel" => "^0.5",
+        ];
+
         if($this->useGit){
             exec("git checkout -b update/laravel-9");
         }
@@ -78,11 +82,6 @@ class Updater
 
         $this->removeComposerPackage($removals);
         $this->removeComposerPackage($devRemovals, true);
-
-        $optionalUpdates = [
-            // "litstack/pages" => "*",
-            // "litstack/meta" => "*"
-        ];
 
         $this->updateOptionalCompsoerPackages($optionalUpdates);
 
@@ -129,7 +128,8 @@ class Updater
             Console::warning("PHP version must be >= 8.1 to support Laravel 10. Please update PHP and try again.");
             return;
         }
-                $composerJson = file_get_contents('composer.json');
+
+        $composerJson = file_get_contents('composer.json');
 
         $removals = ['fruitcake/laravel-cors'];
 
@@ -145,6 +145,7 @@ class Updater
 
         $optionalUpdates = [
             "laravel/sanctum" => "^3.0",
+            "inertiajs/inertia-laravel" => "^0.6.5",
         ];
 
         if($this->useGit){
