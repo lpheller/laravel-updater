@@ -7,6 +7,8 @@ class Updater
 {
     use HandlesCompoerPackages;
 
+    public $useGit = false;
+
     public function getCurrentlyInstalledLaravelMajorVersion(){
         $laravelVersion = exec("composer show laravel/framework | grep versions |awk '{print $4}'");
         $laravelVersion = str_replace('v', '', $laravelVersion);
@@ -72,24 +74,28 @@ class Updater
         $this->removeComposerPackage($devRemovals, true);
 
         $optionalUpdates = [
-            "litstack/pages" => "*",
-            "litstack/meta" => "*"
+            // "litstack/pages" => "*",
+            // "litstack/meta" => "*"
         ];
 
         $this->updateOptionalCompsoerPackages($optionalUpdates);
 
         exec("composer update -W", $output, $result_code);
         
-        exec("git add .");
-        
-        exec("git commit -m 'Update to Laravel 9'");
+        if($this->useGit) {
+            exec("git add .");
+            exec("git commit -m 'Update to Laravel 9'");
+        }
+      
 
         if($result_code !== 0) {
             Console::error("Error occurred during composer update. Please check logs and try again.");
 
-            exec("git restore composer.json");
-            exec("git checkout - "); // back to previous branch
-            exec("git branch -D update/laravel-9");
+            if($this->useGit){
+                exec("git restore composer.json");
+                exec("git checkout - "); // back to previous branch
+                exec("git branch -D update/laravel-9");
+            }
             return;
         }
 
@@ -132,7 +138,9 @@ class Updater
             "laravel/sanctum" => "^3.0",
         ];
 
-        exec("git checkout -b update/laravel-10", $output, $result_code);
+        if($this->useGit){
+            exec("git checkout -b update/laravel-10", $output, $result_code);
+        }
 
         $this->updateComposerPackages($packageUpdates);
         $this->updateComposerPackages($devUpdates, true);
@@ -142,17 +150,20 @@ class Updater
 
         exec("composer update -W", $output, $result_code);
 
-        exec("git add .");
-
-        exec("git commit -m 'Update to Laravel 10'");
+        if($this->useGit){
+            exec("git add .");
+            exec("git commit -m 'Update to Laravel 10'");
+        }
 
     
         if($result_code !== 0) {
             Console::error("Error occurred during composer update. Please check logs and try again.");
 
-            exec("git restore composer.json");
-            exec("git checkout - "); // back to previous branch
-            exec("git branch -D update/laravel-10");
+            if($this->useGit){
+                exec("git restore composer.json");
+                exec("git checkout - "); // back to previous branch
+                exec("git branch -D update/laravel-10");
+            }
 
             return;
         }
@@ -165,7 +176,7 @@ class Updater
         }
 
         $packageUpdates = [
-        "laravel/framework" => "^11.0",
+            "laravel/framework" => "^11.0",
         ];
 
         $devPackageUpdates = [
@@ -179,7 +190,9 @@ class Updater
         ];
 
         
-        exec("git checkout -b update/laravel-10", $output, $result_code);
+        if($this->useGit){
+            exec("git checkout -b update/laravel-11", $output, $result_code);
+        }
 
         $this->updateComposerPackages($packageUpdates);
         $this->updateComposerPackages($devPackageUpdates, true);
@@ -189,16 +202,19 @@ class Updater
 
         exec("composer update -W", $output, $result_code);
 
-        exec("git add .");
-
-        exec("git commit -m 'Update to Laravel 10'");
+        if($this->useGit){
+            exec("git add .");
+            exec("git commit -m 'Update to Laravel 11'");
+        }
     
         if($result_code !== 0) {
             Console::error("Error occurred during composer update. Please check logs and try again.");
 
-            exec("git restore composer.json");
-            exec("git checkout - "); // back to previous branch
-            exec("git branch -D update/laravel-10");
+            if($this->useGit){
+                exec("git restore composer.json");
+                exec("git checkout - "); // back to previous branch
+                exec("git branch -D update/laravel-11");
+            }
 
             return;
         }
