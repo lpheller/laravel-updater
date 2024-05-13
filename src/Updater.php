@@ -48,6 +48,9 @@ class Updater
             return;
         }
 
+        $composerJson = file_get_contents('composer.json');
+        
+
         $updatePackages = [
             "laravel/framework" => "^9.0",
         ];
@@ -94,6 +97,8 @@ class Updater
         if($result_code !== 0) {
             Console::error("Error occurred during composer update. Please check logs and try again.");
 
+            file_put_contents('composer.json', $composerJson); // restore composer.json (in case of error
+
             if($this->useGit){
                 exec("git restore composer.json");
                 exec("git checkout - "); // back to previous branch
@@ -124,6 +129,7 @@ class Updater
             Console::warning("PHP version must be >= 8.1 to support Laravel 10. Please update PHP and try again.");
             return;
         }
+                $composerJson = file_get_contents('composer.json');
 
         $removals = ['fruitcake/laravel-cors'];
 
@@ -162,6 +168,8 @@ class Updater
         if($result_code !== 0) {
             Console::error("Error occurred during composer update. Please check logs and try again.");
 
+            file_put_contents('composer.json', $composerJson); // restore composer.json (in case of error)
+
             if($this->useGit){
                 exec("git restore composer.json");
                 exec("git checkout - "); // back to previous branch
@@ -177,6 +185,8 @@ class Updater
             Console::warning("PHP version must be >= 8.2 to support Laravel 11. Please update PHP and try again.");
             return;
         }
+
+        $composerJson = file_get_contents('composer.json');
 
         $packageUpdates = [
             "laravel/framework" => "^11.0",
@@ -212,6 +222,8 @@ class Updater
     
         if($result_code !== 0) {
             Console::error("Error occurred during composer update. Please check logs and try again.");
+
+            file_put_contents('composer.json', $composerJson); // restore composer.json (in case of error)
 
             if($this->useGit){
                 exec("git restore composer.json");
