@@ -200,6 +200,11 @@ class Updater
         $optionalUpdates = [
             "laravel/sanctum" => "^4.0",
             "inertiajs/inertia-laravel" => "^1.0",
+        ];
+
+        $optionalDevUpdates = [
+            "pestphp/pest" => "^2.0",
+            "pestphp/pest-plugin-laravel" => "^2.0",
             "laravel/breeze" => "^2.0",
         ];
 
@@ -212,6 +217,7 @@ class Updater
         $this->updateComposerPackages($devPackageUpdates, true);
 
         $this->updateOptionalCompsoerPackages($optionalUpdates);
+        $this->updateOptionalCompsoerPackages($optionalDevUpdates, true);
 
 
         exec("composer update -W", $output, $result_code);
