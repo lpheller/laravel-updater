@@ -19,6 +19,8 @@ class Laravel10Updater extends BaseUpdater
     public $optionalPackageUpdates = [
         'laravel/sanctum' => '^3.0',
         'inertiajs/inertia-laravel' => '^0.6.5',
+        'aw-studio/laravel-redirects' => '^0.4',
+
     ];
 
     public $optionalDevPackageUpdates = [];

@@ -10,8 +10,7 @@ class Laravel9Updater extends BaseUpdater
 
     public $updatedPackages = [
         'laravel/framework' => '^9.0',
-        'litstack/meta' => '^2.0',
-        'litstack/litstack' => '^3.8',
+
     ];
 
     public $updatedDevPackages = [
@@ -21,6 +20,9 @@ class Laravel9Updater extends BaseUpdater
 
     public $optionalPackageUpdates = [
         'inertiajs/inertia-laravel' => '^0.5',
+        'aw-studio/laravel-redirects' => '^0.2',
+        'litstack/meta' => '^2.0',
+        'litstack/litstack' => '^3.8',
     ];
 
     public $optionalDevPackageUpdates = [];
