@@ -1,0 +1,25 @@
+{
+  "name": "heller/laravel-updater",
+  "description": "Tries to update laravel applications",
+  "type": "project",
+  "require-dev": {
+    "laravel/pint": "dev-main"
+  },
+  "bin": [
+    "bin/laravel"
+  ],
+  "license": "MIT",
+  "autoload": {
+    "psr-4": {
+      "Heller\\LaravelUpdater\\": "src/"
+    }
+  },
+  "authors": [
+    {
+      "name": "Lukas Heller",
+      "email": "dev@lukas-heller.de"
+    }
+  ],
+  "minimum-stability": "dev",
+  "require": {}
+}

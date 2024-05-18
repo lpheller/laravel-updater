@@ -3,10 +3,8 @@
 //
 // This script is expected to be run from the root of the laravel project
 //
-require getcwd().'/vendor/autoload.php';
+require __DIR__.'/vendor/autoload.php';
 
-require_once __DIR__.'/src/Updater.php';
-
-$updater = new Updater();
+$updater = new \Heller\LaravelUpdater\Updater();
 
 $updater->run();
