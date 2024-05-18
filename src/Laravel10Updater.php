@@ -17,10 +17,12 @@ class Laravel10Updater extends BaseUpdater
     ];
 
     public $optionalPackageUpdates = [
-        'laravel/sanctum' => '^3.0',
+        'doctrine/dbal' => '^3.0',
+        'laravel/ui' => '^4.0',
+        'laravel/sanctum' => '^3.2',
         'inertiajs/inertia-laravel' => '^0.6.5',
         'aw-studio/laravel-redirects' => '^0.4',
-
+        'larabug/larabug' => '^3.0',
     ];
 
     public $optionalDevPackageUpdates = [];
