@@ -12,7 +12,10 @@
   "autoload": {
     "psr-4": {
       "Heller\\LaravelUpdater\\": "src/"
-    }
+    },
+    "files": [
+      "src/support/helpers.php"
+    ]
   },
   "authors": [
     {

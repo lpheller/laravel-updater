@@ -2,8 +2,6 @@
 
 namespace Heller\LaravelUpdater\Support;
 
-require_once __DIR__.'/IO.php';
-
 class Console
 {
     public static function log($string)

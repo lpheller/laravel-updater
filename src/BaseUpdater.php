@@ -59,6 +59,8 @@ class BaseUpdater
         $this->additionalTasks();
 
         Console::success('Laravel update successful!');
+
+        $this->integrityCheck();
     }
 
     protected function executeComposerUpdate()
@@ -83,5 +85,19 @@ class BaseUpdater
     public function additionalTasks()
     {
         // Add any additional tasks here
+    }
+
+    public function integrityCheck()
+    {
+        // check if laravel/pint is installed not as dev dependency
+        $composerDependencies = $this->getComposerDependencies();
+        if (in_array('laravel/pint', array_keys($composerDependencies))) {
+            Console::warning('laravel/pint is installed as a dependency. Please install it as a dev dependency.');
+        }
+        // check if laravel/breeze is installed not as dev dependency
+        if (in_array('laravel/breeze', array_keys($composerDependencies))) {
+            Console::warning('laravel/breeze is installed as a dependency. If still required, please install it as a dev dependency or remove it.');
+        }
+
     }
 }

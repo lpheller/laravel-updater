@@ -7,6 +7,7 @@ class Laravel10Updater extends BaseUpdater
     public $requiredPHPVersion = '8.1';
 
     public $updatedPackages = [
+        'php' => '^8.1',
         'laravel/framework' => '^10.0',
     ];
 
@@ -23,6 +24,7 @@ class Laravel10Updater extends BaseUpdater
         'inertiajs/inertia-laravel' => '^0.6.5',
         'aw-studio/laravel-redirects' => '^0.4',
         'larabug/larabug' => '^3.0',
+        'barryvdh/laravel-dompdf' => '^2.0.1',
     ];
 
     public $optionalDevPackageUpdates = [];

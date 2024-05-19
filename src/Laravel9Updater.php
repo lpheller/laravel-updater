@@ -10,7 +10,6 @@ class Laravel9Updater extends BaseUpdater
 
     public $updatedPackages = [
         'laravel/framework' => '^9.0',
-
     ];
 
     public $updatedDevPackages = [

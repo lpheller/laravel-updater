@@ -7,6 +7,7 @@ class Laravel11Updater extends BaseUpdater
     public $requiredPHPVersion = '8.2';
 
     public $updatedPackages = [
+        'php' => '^8.2',
         'laravel/framework' => '^11.0',
     ];
 
