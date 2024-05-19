@@ -1,7 +1,7 @@
 # Laravel updater
 Tries to update your laravel project.
 
-**No automatic code refactoring **
+**No automatic code refactoring**
 
 
 ## How to use
