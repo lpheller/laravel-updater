@@ -1,0 +1,10 @@
+#!/usr/bin/env php
+<?php
+//
+// This script is expected to be run from the root of the laravel project
+//
+require __DIR__.'/vendor/autoload.php';
+
+$updater = new \Heller\LaravelUpdater\Updater();
+
+$updater->run();
