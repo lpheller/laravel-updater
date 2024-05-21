@@ -9,6 +9,7 @@ class Laravel11Updater extends BaseUpdater
     public $updatedPackages = [
         'php' => '^8.2',
         'laravel/framework' => '^11.0',
+
     ];
 
     public $updatedDevPackages = [
@@ -20,6 +21,7 @@ class Laravel11Updater extends BaseUpdater
         'inertiajs/inertia-laravel' => '^1.0',
         'aw-studio/laravel-redirects' => '^0.7',
         'spatie/laravel-sitemap' => '^7.2',
+        'codebar-ag/laravel-prerender' => '^11.0',
     ];
 
     public $optionalDevPackageUpdates = [

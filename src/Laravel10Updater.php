@@ -9,12 +9,15 @@ class Laravel10Updater extends BaseUpdater
     public $updatedPackages = [
         'php' => '^8.1',
         'laravel/framework' => '^10.0',
+
     ];
 
     public $updatedDevPackages = [
         'nunomaduro/collision' => '^7.0',
         'spatie/laravel-ignition' => '^2.0',
         'phpunit/phpunit' => '^10.0',
+        'pestphp/pest' => '^2.0',
+        'pestphp/pest-plugin-laravel' => '^2.0',
     ];
 
     public $optionalPackageUpdates = [
@@ -25,6 +28,7 @@ class Laravel10Updater extends BaseUpdater
         'aw-studio/laravel-redirects' => '^0.4',
         'larabug/larabug' => '^3.0',
         'barryvdh/laravel-dompdf' => '^2.0.1',
+        'codebar-ag/laravel-prerender' => '^3.2',
     ];
 
     public $optionalDevPackageUpdates = [];
