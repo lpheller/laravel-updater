@@ -32,7 +32,9 @@ class Laravel11Updater extends BaseUpdater
 
     public $removedPackages = [];
 
-    public $removedDevPackages = [];
+    public $removedDevPackages = [
+        'pestphp/pest-plugin-parallel',
+    ];
 
     public function additionalTasks()
     {

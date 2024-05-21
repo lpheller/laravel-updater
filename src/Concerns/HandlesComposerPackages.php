@@ -22,10 +22,16 @@ trait HandlesComposerPackages
         $dependencies = $dev ? $this->getComposerDevDependencies() : $this->getComposerDependencies();
 
         foreach ($packages as $package => $version) {
-            if (array_key_exists($package, $dependencies)) {
+            if (! array_key_exists($package, $dependencies)) {
+                continue;
+            }
+
+            $currentVersion = $dependencies[$package];
+            if (version_compare($currentVersion, $version, '<')) {
                 Console::log("Updating $package to $version");
                 exec("composer require $package:$version $flag --no-update");
             }
+
         }
     }
 
