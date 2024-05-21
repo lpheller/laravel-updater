@@ -7,7 +7,9 @@ Tries to update your laravel project.
 ## How to use
 
 - Clone this repo
-- run this within your a laravel project
+- run `composer install`
+  
+- run this within your a laravel project:
 
 ```sh
 php path/to/repo/bin/updater
