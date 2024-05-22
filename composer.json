@@ -2,13 +2,20 @@
   "name": "heller/laravel-updater",
   "description": "Tries to update laravel applications",
   "type": "project",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Lukas Heller",
+      "email": "dev@lukas-heller.de"
+    }
+  ],
   "require-dev": {
-    "laravel/pint": "dev-main"
+    "laravel/pint": "dev-main",
+    "pestphp/pest": "3.x-dev"
   },
   "bin": [
-    "bin/laravel"
+    "bin/updater"
   ],
-  "license": "MIT",
   "autoload": {
     "psr-4": {
       "Heller\\LaravelUpdater\\": "src/"
@@ -17,12 +24,10 @@
       "src/support/helpers.php"
     ]
   },
-  "authors": [
-    {
-      "name": "Lukas Heller",
-      "email": "dev@lukas-heller.de"
-    }
-  ],
   "minimum-stability": "dev",
-  "require": {}
+  "config": {
+    "allow-plugins": {
+      "pestphp/pest-plugin": true
+    }
+  }
 }

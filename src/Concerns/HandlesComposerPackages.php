@@ -6,13 +6,20 @@ use Heller\LaravelUpdater\Support\Console;
 
 trait HandlesComposerPackages
 {
+    public function requireComposerPackage($package, $version, $dev = false)
+    {
+        $flag = $dev ? '--dev' : '';
+        Console::log("Requiring $package:$version");
+        exec("composer require $package:$version $flag --no-update > /dev/null 2>&1");
+    }
+
     public function updateComposerPackages($packages = [], $dev = false)
     {
         $flag = $dev ? '--dev' : '';
 
         foreach ($packages as $package => $version) {
             Console::log("Updating $package to $version");
-            exec("composer require $package:$version $flag --no-update");
+            exec("composer require $package:$version $flag --no-update > /dev/null 2>&1");
         }
     }
 
@@ -29,7 +36,7 @@ trait HandlesComposerPackages
             $currentVersion = $dependencies[$package];
             if (version_compare($currentVersion, $version, '<')) {
                 Console::log("Updating $package to $version");
-                exec("composer require $package:$version $flag --no-update");
+                exec("composer require $package:$version $flag --no-update > /dev/null 2>&1");
             }
 
         }
@@ -43,7 +50,7 @@ trait HandlesComposerPackages
         foreach ($removedPackages as $removal) {
             if (array_key_exists($removal, $dependencies)) {
                 Console::log("Removing $removal package");
-                exec("composer remove $removal $flag --no-update");
+                exec("composer remove $removal $flag --no-update > /dev/null 2>&1");
             } else {
                 Console::log("Package $removal is not currently installed. Skipping removal.");
             }
@@ -52,15 +59,20 @@ trait HandlesComposerPackages
 
     protected function getComposerDevDependencies()
     {
-        $composerJson = json_decode(file_get_contents('composer.json'), true);
+        $composerJson = json_decode(file_get_contents($this->getComposerJsonPath()), true);
 
-        return $composerJson['require-dev'];
+        return $composerJson['require-dev'] ?? [];
     }
 
     protected function getComposerDependencies()
     {
-        $composerJson = json_decode(file_get_contents('composer.json'), true);
+        $composerJson = json_decode(file_get_contents($this->getComposerJsonPath()), true);
 
-        return $composerJson['require'];
+        return $composerJson['require'] ?? [];
+    }
+
+    protected function getComposerJsonPath()
+    {
+        return 'composer.json';
     }
 }
