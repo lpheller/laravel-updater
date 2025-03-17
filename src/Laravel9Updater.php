@@ -41,6 +41,18 @@ class Laravel9Updater extends BaseUpdater
         $trustProxyMiddleware = file_get_contents('app/Http/Middleware/TrustProxies.php');
         if (str_contains($trustProxyMiddleware, 'use Fideloper\Proxy\TrustProxies as Middleware;')) {
             $trustProxyMiddlewareModified = str_replace('use Fideloper\Proxy\TrustProxies as Middleware;', 'use Illuminate\Http\Middleware\TrustProxies as Middleware;', $trustProxyMiddleware);
+
+            // remove deprecated headers property (https://laravel.com/docs/9.x/upgrade#the-assert-deleted-method)
+            $remove = "/**
+     * The headers that should be used to detect proxies.
+     *
+     * @var int
+     */
+    protected \$headers = Request::HEADER_X_FORWARDED_ALL;";
+
+            $trustProxyMiddlewareModified = str_replace($remove, '', $trustProxyMiddlewareModified);
+
+
             file_put_contents('app/Http/Middleware/TrustProxies.php', $trustProxyMiddlewareModified);
             Console::log('Updated app/Http/Middleware/TrustProxies.php to use Illuminate\Http\Middleware\TrustProxies as Middleware');
         }
@@ -49,6 +61,8 @@ class Laravel9Updater extends BaseUpdater
         $httpKernel = file_get_contents('app/Http/Kernel.php');
         if (str_contains($httpKernel, '\Fruitcake\Cors\HandleCors::class')) {
             $httpKernelModified = str_replace('\Fruitcake\Cors\HandleCors::class', '\Illuminate\Http\Middleware\HandleCors::class', $httpKernel);
+
+
             file_put_contents('app/Http/Kernel.php', $httpKernelModified);
             Console::log('Updated app/Http/Kernel.php to use Illuminate\Http\Middleware\HandleCors::class');
         }
