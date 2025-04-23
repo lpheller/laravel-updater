@@ -42,5 +42,10 @@ class Updater
             (new Laravel11Updater())->run();
         }
 
+        if (version_compare($currentLaravelVersion, '12.0', '<') && version_compare($currentLaravelVersion, '11.0', '>=')) {
+            Console::log("Updating Laravel $currentLaravelVersion to 12");
+            (new Laravel12Updater())->run();
+        }
+
     }
 }
