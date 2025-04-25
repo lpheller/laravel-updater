@@ -61,6 +61,7 @@ class BaseUpdater
         Console::success('Laravel update successful!');
 
         $this->integrityCheck();
+        unlink('composer.json.bak');
     }
 
     protected function executeComposerUpdate()
