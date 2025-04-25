@@ -16,13 +16,14 @@ class Laravel12Updater extends BaseUpdater
     ];
 
     public $optionalPackageUpdates = [
+        'owen-it/laravel-auditing' => '^14.0',
+        'luvi-ui/laravel-luvi' => '^0.6',
         'diglactic/laravel-breadcrumbs' => '^10.0',
     ];
 
     public $optionalDevPackageUpdates = [
         'pestphp/pest' => '^3.0',
         'pestphp/pest-plugin-laravel' => '^3.0',
-        'luvi-ui/laravel-luvi' => '^0.6'
     ];
 
     public $removedPackages = [];
