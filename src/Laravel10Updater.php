@@ -26,9 +26,10 @@ class Laravel10Updater extends BaseUpdater
         'laravel/sanctum' => '^3.2',
         'inertiajs/inertia-laravel' => '^0.6.5',
         'aw-studio/laravel-redirects' => '^0.4',
+        'aw-studio/laravel-states' => '^1.5',
         'larabug/larabug' => '^3.0',
         'barryvdh/laravel-dompdf' => '^2.0.1',
-        'codebar-ag/laravel-prerender' => '^3.2',
+        'codebar-ag/laravel-prerender' => '^3.3',
     ];
 
     public $optionalDevPackageUpdates = [];

@@ -22,6 +22,7 @@ class Laravel9Updater extends BaseUpdater
         'aw-studio/laravel-redirects' => '^0.2',
         'litstack/meta' => '^2.0',
         'litstack/litstack' => '^3.8',
+        'codebar-ag/laravel-prerender' => '^3.2',
     ];
 
     public $optionalDevPackageUpdates = [];
