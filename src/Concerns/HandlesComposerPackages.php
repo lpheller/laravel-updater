@@ -32,12 +32,8 @@ trait HandlesComposerPackages
             if (! array_key_exists($package, $dependencies)) {
                 continue;
             }
-
-            $currentVersion = $dependencies[$package];
-            if (version_compare($currentVersion, $version, '<')) {
-                Console::log("Updating $package to $version");
-                exec("composer require $package:$version $flag --no-update > /dev/null 2>&1");
-            }
+            Console::log("Updating $package to $version");
+            exec("composer require $package:$version $flag --no-update > /dev/null 2>&1");
 
         }
     }

@@ -30,6 +30,7 @@ class Laravel9Updater extends BaseUpdater
     public $removedPackages = [
         'fruitcake/laravel-cors',
         'fideloper/proxy',
+        'based/laravel-typescript'
     ];
 
     public $removedDevPackages = [

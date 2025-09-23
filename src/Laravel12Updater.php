@@ -19,6 +19,7 @@ class Laravel12Updater extends BaseUpdater
         'owen-it/laravel-auditing' => '^14.0',
         'luvi-ui/laravel-luvi' => '^0.6',
         'diglactic/laravel-breadcrumbs' => '^10.0',
+        'aw-studio/laravel-states' => '^1.6'
     ];
 
     public $optionalDevPackageUpdates = [
